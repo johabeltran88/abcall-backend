@@ -5,39 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa614a01-67dc-4c73-babe-96ca8523c820" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/abcall-backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/appspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildspec.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/health_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dto/user_dto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imageDetail.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imagedefinitions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/instance/users.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/base_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repositories/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repositories/user_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taskdef.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +169,7 @@
       <updated>1727909525822</updated>
       <workItem from="1727909526851" duration="243000" />
       <workItem from="1727909808438" duration="391000" />
-      <workItem from="1727910260170" duration="10611000" />
+      <workItem from="1727910260170" duration="12443000" />
     </task>
     <servers />
   </component>
