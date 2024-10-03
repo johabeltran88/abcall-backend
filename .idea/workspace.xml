@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa614a01-67dc-4c73-babe-96ca8523c820" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/services/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/health_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/health_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/user_dto.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/user_dto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/user_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/user_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,10 +81,11 @@
       <recent name="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend\src" />
       <recent name="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml.backend: Compose Deployment">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="abcall-backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,8 +168,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yml.backend: Compose Deployment" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Docker.docker-compose.yml.backend: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.Dockerfile" />
@@ -169,7 +186,7 @@
       <updated>1727909525822</updated>
       <workItem from="1727909526851" duration="243000" />
       <workItem from="1727909808438" duration="391000" />
-      <workItem from="1727910260170" duration="12443000" />
+      <workItem from="1727910260170" duration="13275000" />
     </task>
     <servers />
   </component>
@@ -179,6 +196,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/abcall_backend$database.coverage" NAME="database Coverage Results" MODIFIED="1727912081741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/abcall_backend$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1727913386775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/abcall_backend$main.coverage" NAME="main Coverage Results" MODIFIED="1727922962307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/abcall_backend$main.coverage" NAME="main Coverage Results" MODIFIED="1727969356102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

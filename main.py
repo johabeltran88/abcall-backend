@@ -1,7 +1,7 @@
 from flask import Flask
-from config.database import init_db, db
-from controllers.health_controller import health_bp
-from controllers.user_controller import user_bp
+from src.config.database import init_db, db
+from src.controllers.health_controller import health_bp
+from src.controllers.user_controller import user_bp
 
 app = Flask(__name__)
 init_db(app)
