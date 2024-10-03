@@ -6,7 +6,7 @@ phases:
       - pip install -r requirements.txt
   pre_build:
     commands:
-      - python -m pytest --cov=src --junitxml=test_result/report.xml
+      - python -m pytest --cov=src --junit-xml=test_result/report.xml
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 503561418997.dkr.ecr.us-east-1.amazonaws.com
   build:
     commands:
