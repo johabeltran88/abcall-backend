@@ -1,0 +1,6 @@
+[
+  {
+    "name": "abcall-backend-container",
+    "imageUri": "503561418997.dkr.ecr.us-east-1.amazonaws.com/abcall-backend:latest"
+  }
+]

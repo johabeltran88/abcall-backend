@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "Resources": [
+    {
+      "TargetService": {
+        "Type": "AWS::ECS::Service",
+        "Properties": {
+          "TaskDefinition": "arn:aws:ecs:us-east-1:503561418997:task-definition/abcall-backend-task:2",
+          "LoadBalancerInfo": {
+            "ContainerName": "abcall-backend-container",
+            "ContainerPort": 5000
+          }
+        }
+      }
+    }
+  ]
+}

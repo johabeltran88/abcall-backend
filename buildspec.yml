@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - python -m pytest --cov=src --junitxml=test_result/report.xml
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 503561418997.dkr.ecr.us-east-1.amazonaws.com
+  build:
+    commands:
+      - docker build -t abcall-backend .
+      - docker tag abcall-backend:latest 503561418997.dkr.ecr.us-east-1.amazonaws.com/abcall-backend:latest
+  post_build:
+    commands:
+      - docker push 503561418997.dkr.ecr.us-east-1.amazonaws.com/abcall-backend:latest
+reports:
+  pytest_reports:
+    files:
+      - report.xml
+    base-directory: test_result
+    file-format: JUNITXML
+artifacts:
+  files:
+    - '**/*'
