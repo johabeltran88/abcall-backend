@@ -9,7 +9,12 @@ init_db(app)
 app.register_blueprint(user_bp)
 app.register_blueprint(health_bp)
 
-if __name__ == '__main__':
+
+@app.before_request
+def init():
     with app.app_context():
         db.create_all()
+
+
+if __name__ == '__main__':
     app.run(debug=True)
