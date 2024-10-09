@@ -45,3 +45,10 @@ jobs:
       - name: Run unit tests
         working-directory: ./test
         run: pytest --cov=src -v -s --cov-fail-under=65
+
+      - name: Merge feature branch into Develop
+        uses: tukasz/direct-merge-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: ${{ github.ref }}
+          target-branch: develop
