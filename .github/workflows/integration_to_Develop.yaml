@@ -4,6 +4,10 @@ on:
     branches:
       - 'feature**'
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   tests:
     name: Tests
