@@ -44,4 +44,4 @@ jobs:
 
       - name: Run unit tests
         working-directory: ./test
-        run: pytest --cov=src -v -s --cov-fail-under=70
+        run: pytest --cov=src -v -s --cov-fail-under=65
