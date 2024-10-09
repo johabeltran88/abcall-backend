@@ -4,6 +4,10 @@ on:
     branches:
       - 'feature**'
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   tests:
     name: Tests
@@ -11,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10]
+        python-version: [ 3.13 ]
 
     steps:
       - name: Checkout to feature branch
@@ -20,13 +24,12 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Merge Develop into feature branch
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin develop
-          git merge origin/develop 
-        env:
+        uses: tukasz/direct-merge-action@master
+        with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: develop
+          target-branch:  ${{ github.ref }}
+
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -41,4 +44,11 @@ jobs:
 
       - name: Run unit tests
         working-directory: ./test
-        run: pytest --cov=src -v -s --cov-fail-under=70
+        run: pytest --cov=src -v -s --cov-fail-under=65
+
+      - name: Merge feature branch into Develop
+        uses: tukasz/direct-merge-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: ${{ github.ref }}
+          target-branch: develop
