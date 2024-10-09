@@ -20,11 +20,12 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Merge Develop into feature branch
-        uses: lukaszlach/direct-merge-action@master
+        uses: devops-infra/github-actions-merge@v2.4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          source-branch: develop
-          target-branch: ${{ github.ref }}
+          repository: ${{ github.repository }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          from_branch: develop
+          to_branch: ${{ github.ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
