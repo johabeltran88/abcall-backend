@@ -27,7 +27,7 @@ jobs:
           git checkout develop
           git pull
           git checkout ${{ github.ref }}
-          git merge develop
+          git merge develop --allow-unrelated-histories -m "Merge branch 'develop' into ${{ github.ref }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
