@@ -20,12 +20,13 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Merge Develop into feature branch
-        uses: devops-infra/github-actions-merge@v2.4
-        with:
-          repository: ${{ github.repository }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          from_branch: develop
-          to_branch: ${{ github.ref }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin develop
+          git merge origin/develop
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
