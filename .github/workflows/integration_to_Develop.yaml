@@ -1,0 +1,42 @@
+name: Merging of feature Branch into Develop Branch
+on:
+  push:
+    branches:
+      - 'feature**'
+
+jobs:
+  tests:
+    name: Tests
+    if: ${{ contains(github.event.head_commit.message, 'DEPLOY') }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10]
+
+    steps:
+      - name: Checkout to feature branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Merge Develop into feature branch
+        uses: lukaszlach/direct-merge-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: develop
+          target-branch: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        working-directory: ./
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        working-directory: ./test
+        run: pytest --cov=src -v -s --cov-fail-under=70
