@@ -59,4 +59,5 @@ jobs:
           base: main
           title: "Release PR: ${{ github.event.head_commit.message }}"
           body: "This is an automated PR created from a successful test run."
+          rebase-strategy: none
           draft: false
