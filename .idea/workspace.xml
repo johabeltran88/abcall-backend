@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa614a01-67dc-4c73-babe-96ca8523c820" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/commons/roles_enum.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/agent_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/auth_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/base_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/consumer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repositories/agent_repository.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/agent_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user_controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dto/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dto/user_dto.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/user_repository.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/user_service.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +88,7 @@
       <recent name="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml.backend: Compose Deployment">
+  <component name="RunManager" selected="Flask server.Flask (main.py)">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="abcall-backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,7 +119,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -116,12 +133,8 @@
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="DB_URI" value="postgresql://postgres:MISO2024ProyectoFinal2@backend-instance.cn80qiimkmne.us-east-1.rds.amazonaws.com:5432/postgres" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.12 (abcall-backend)" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -187,9 +200,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Flask server.Flask (main.py)" />
         <item itemvalue="Docker.docker-compose.yml.backend: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Flask server.Flask (main.py)" />
         <item itemvalue="Python tests.Python tests for user_controller_test.UserControllerTests.test_health" />
         <item itemvalue="Python.main" />
       </list>
@@ -206,7 +219,9 @@
       <workItem from="1727909526851" duration="243000" />
       <workItem from="1727909808438" duration="391000" />
       <workItem from="1727910260170" duration="16493000" />
-      <workItem from="1728331629317" duration="7327000" />
+      <workItem from="1728331629317" duration="8697000" />
+      <workItem from="1728344522086" duration="610000" />
+      <workItem from="1728612383426" duration="14803000" />
     </task>
     <servers />
   </component>
@@ -215,7 +230,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/abcall_backend$.coverage" NAME=" Coverage Results" MODIFIED="1727971720422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/controllers" />
-    <SUITE FILE_PATH="coverage/abcall_backend$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1728338216196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/abcall_backend$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1728617739611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/abcall_backend$database.coverage" NAME="database Coverage Results" MODIFIED="1727912081741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/abcall_backend$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1727913386775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/abcall_backend$main.coverage" NAME="main Coverage Results" MODIFIED="1727969356102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
