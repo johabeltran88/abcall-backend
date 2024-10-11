@@ -49,18 +49,3 @@ jobs:
         run: |
           git checkout -b $BRANCH_NAME develop
           git push origin $BRANCH_NAME
-
-      - name: Create Pull Request to main
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { data: pullRequest } = await github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              head: '${{ env.BRANCH_NAME }}',
-              base: 'main',
-              title: 'Release PR: ${{ github.event.head_commit.message }}',
-              body: 'This is an automated PR created from a successful test run.'
-            })
-            core.setOutput('pr_url', pullRequest.html_url)
