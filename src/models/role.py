@@ -15,7 +15,7 @@ class Role(db.Model, BaseModel):
                          db.ForeignKey('agents.id'), nullable=False)
     agent = relationship('Agent', back_populates='roles')
 
-    def __init__(self, name: str, agent_id: str):
+    def __init__(self, name, agent_id):
         BaseModel.__init__(self)
         self.name = name
         self.agent_id = agent_id

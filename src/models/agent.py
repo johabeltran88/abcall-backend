@@ -8,7 +8,7 @@ class Agent(db.Model, User):
     __tablename__ = 'agents'
     roles = relationship('Role', back_populates='agent')
 
-    def __init__(self, name: str, email: str, password: str):
+    def __init__(self, name, email, password):
         User.__init__(self, name, email, password)
 
     def to_dict(self):

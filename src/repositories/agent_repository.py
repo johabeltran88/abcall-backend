@@ -1,4 +1,5 @@
 from src.config.database import db
+from src.exceptions.api_exception import ApiException
 from src.models.agent import Agent
 
 
@@ -11,9 +12,5 @@ class AgentRepository:
         return agent
 
     @staticmethod
-    def login(email: str, password: str):
-        agent = Agent.query.filter_by(email=email).first()
-        if agent and agent.check_password(password):
-            return True
-        else:
-            return False
+    def get_by_email(email):
+        return Agent.query.filter_by(email=email).first()
