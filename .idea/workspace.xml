@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa614a01-67dc-4c73-babe-96ca8523c820" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/commons/roles_enum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/agent_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/auth_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/base_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/consumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/role.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repositories/agent_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/agent_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/user_controller.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dto/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dto/user_dto.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/base_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/user_repository.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user_service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,21 +45,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/aleja/OneDrive/Documentos/maestria/Ciclo 8/abcall-backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/login",
+    "last_opened_file_path": "C:/Users/aleja/OneDrive/Documentos/maestria/Ciclo 8/abcall-backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend" />
@@ -221,7 +202,7 @@
       <workItem from="1727910260170" duration="16493000" />
       <workItem from="1728331629317" duration="8697000" />
       <workItem from="1728344522086" duration="610000" />
-      <workItem from="1728612383426" duration="14803000" />
+      <workItem from="1728612383426" duration="15132000" />
     </task>
     <servers />
   </component>
