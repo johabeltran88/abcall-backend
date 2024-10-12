@@ -1,4 +1,4 @@
-from src.config.database import db
+from src.config.database_config import db
 from src.exceptions.api_exception import ApiException
 from src.models.agent import Agent
 

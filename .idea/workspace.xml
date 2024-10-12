@@ -5,20 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa614a01-67dc-4c73-babe-96ca8523c820" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/commons/exception_enum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/commons/validation_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/api_exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/bad_request_exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/jwt_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/client_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/consumer_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/client_role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/consumer_role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repositories/client_repository.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repositories/consumer_repository.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/client_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/consumer_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/abcall-backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/abcall-backend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/roles_enum.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/role_enum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/agent_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/agent_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/role_enum.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/role_enum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/database_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/auth_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/agent_role.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositories/agent_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/agent_repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/agent_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/agent_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_result/report.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test_result/report.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,21 +70,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/login",
-    "last_opened_file_path": "C:/Users/aleja/OneDrive/Documentos/maestria/Ciclo 8/abcall-backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/login&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/aleja/OneDrive/Documentos/maestria/Ciclo 8/abcall-backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend" />
@@ -82,28 +94,8 @@
       <recent name="C:\Users\aleja\OneDrive\Documentos\maestria\Ciclo 8\abcall-backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.Flask (main.py)">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="abcall-backend" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DB" value="postgresql://postgres:postgres@localhost:5432/backend-db" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+  <component name="RunManager" selected="Flask server.abcall-backend">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/abcall-backend/htmlcov/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="Flask (main.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
@@ -189,16 +181,16 @@
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       <item itemvalue="Flask server.abcall-backend" />
       <item itemvalue="Flask server.Flask (main.py)" />
-      <item itemvalue="Python.main" />
+      <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="Python tests.Python tests for user_controller_test.UserControllerTests.test_health" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Flask server.Flask (main.py)" />
         <item itemvalue="Docker.docker-compose.yml.backend: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Python tests.Python tests for user_controller_test.UserControllerTests.test_health" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +207,9 @@
       <workItem from="1727910260170" duration="16493000" />
       <workItem from="1728331629317" duration="8697000" />
       <workItem from="1728344522086" duration="610000" />
-      <workItem from="1728612383426" duration="21435000" />
+      <workItem from="1728612383426" duration="23348000" />
+      <workItem from="1728699068850" duration="4942000" />
+      <workItem from="1728765089460" duration="4060000" />
     </task>
     <servers />
   </component>
