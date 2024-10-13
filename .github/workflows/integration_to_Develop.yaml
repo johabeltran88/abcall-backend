@@ -42,6 +42,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Create SQLite Tables
+        run: |
+          python -c "from app import db db.create_all()"
+
       - name: Run unit tests
         working-directory: ./test
         run: pytest --cov=src -v -s --cov-fail-under=65
