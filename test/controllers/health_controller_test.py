@@ -1,8 +1,9 @@
 from unittest import TestCase
+
 from main import app
 
 
-class UserControllerTests(TestCase):
+class HealthControllerTests(TestCase):
     def setUp(self):
         self.test_client = app.test_client()
 
