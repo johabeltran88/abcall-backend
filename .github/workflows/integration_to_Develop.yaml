@@ -44,7 +44,7 @@ jobs:
 
       - name: Create SQLite Tables
         run: |
-          python -c "from app import db db.create_all()"
+          python -c "from app import db; db.create_all()"
 
       - name: Run unit tests
         working-directory: ./test
