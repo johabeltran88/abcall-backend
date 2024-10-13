@@ -12,10 +12,10 @@ jobs:
   tests:
     name: Tests
     if: ${{ contains(github.event.head_commit.message, 'DEPLOY') }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ 3.13 ]
+        python-version: [ 3.12.2 ]
 
     steps:
       - name: Checkout to feature branch
