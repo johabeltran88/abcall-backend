@@ -5,12 +5,15 @@ from unittest import TestCase
 from faker import Faker
 
 from main import app
+from src.config.database_config import db
 
 
 class AuthControllerTest(TestCase):
     def setUp(self):
         self.faker = Faker()
         self.test_client = app.test_client()
+        with app.app_context():
+            db.create_all()
 
     def test_login_agent_success(self):
         agent = {

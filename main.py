@@ -45,9 +45,7 @@ def handle_bad_request_exception(exception):
 if __name__ == '__main__':
     with app.app_context():
         if os.environ.get('DB_URI', None) is None:
-            print('SQLite')
             db.create_all()
         else:
-            print('Postgres')
             upgrade()
     app.run(host="0.0.0.0", port=5000, debug=True)
