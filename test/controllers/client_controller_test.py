@@ -29,3 +29,19 @@ class ClientControllerTest(TestCase):
         self.assertEqual(client['name'], json.loads(response.get_data())['name'])
         self.assertEqual(client['email'], json.loads(response.get_data())['email'])
         self.assertIsNotNone(json.loads(response.get_data())['create_at'])
+
+    def test_create_client_invalid_email_error(self):
+        client = {
+            'name': self.faker.name(),
+            'email': self.faker.email(),
+            'password': '123456'
+        }
+        self.test_client.post(
+            '/clients',
+            data=json.dumps(client),
+            headers={'Content-Type': 'application/json'})
+        response = self.test_client.post(
+            '/clients',
+            data=json.dumps(client),
+            headers={'Content-Type': 'application/json'})
+        self.assertEqual(response.status_code, 422)

@@ -9,6 +9,9 @@ class ClientService:
 
     @staticmethod
     def create_client(client):
+        client_tmp = ClientRepository.get_by_email(client.email)
+        if client_tmp:
+            raise ApiException(ExceptionEnum.INVALID_EMAIL)
         client.roles.append(ClientRole(RolesEnum.CLIENT.value, client))
         return ClientRepository.create(client)
 
