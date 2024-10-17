@@ -9,7 +9,10 @@ from src.repositories.agent_repository import AgentRepository
 class AgentService:
 
     @staticmethod
-    def create_agent(agent: Agent):
+    def create_agent(agent):
+        agent_tmp = AgentRepository.get_by_email(agent.email)
+        if agent_tmp:
+            raise ApiException(ExceptionEnum.INVALID_EMAIL)
         agent.roles.append(AgentRole(RolesEnum.AGENT.value, agent))
         return AgentRepository.create(agent)
 

@@ -1,0 +1,1667 @@
+{
+	"info": {
+		"_postman_id": "f470a694-2ab3-4ffa-865f-371acd31a8e9",
+		"name": "Proyecto final",
+		"description": "# 📄 Get started here\n\nThis template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n## 🔖 How to use this template\n\n- Replace the content given brackets (()) with your API's details.\n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n- The API has [rate and usage limits](https://learning.postman.com/docs/developer/postman-api/postman-api-rate-limits/).\n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4253512"
+	},
+	"item": [
+		{
+			"name": "Asesores",
+			"item": [
+				{
+					"name": "Crear asesor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().create_at).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().email).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().name).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().roles).to.be.a('array').and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"agent_email\", pm.response.json().email);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/agents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear asesor sin nombre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/agents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear asesor sin correo electrónico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/agents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear asesor sin contraseña",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/agents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear asesor con correo electrónico registrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 422\", function() {\r",
+									"    pm.response.to.have.status(422)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{agent_email}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/agents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consumidores",
+			"item": [
+				{
+					"name": "Crear consumidor",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().address).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().contact_number).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().create_at).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().email).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().identification_number).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().identification_type).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().name).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().roles).to.be.a('array').and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"consumer_email\", pm.response.json().email);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor sin nombre",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor sin tipo de identificación",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor sin número de identificación",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor sin número de contacto",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor sin correo electrónico",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor sin dirección",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor sin contraseña",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear consumidor con correo electrónico registrado",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const identifications_types = [\"Cédula de ciudadanía\", \"Cédula de extranjería\", \"Tarjeta de identidad\", \"Pasaporte\"];\r",
+									"const identification_type = identifications_types[Math.floor(Math.random() * identifications_types.length)];\r",
+									"pm.environment.set(\"identification_type\", identification_type);\r",
+									"\r",
+									"const identification_number = Math.floor(1000000000 + Math.random() * 9000000000);\r",
+									"pm.environment.set(\"identification_number\", identification_number);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 422\", function() {\r",
+									"    pm.response.to.have.status(422)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"identification_type\": \"{{identification_type}}\",\r\n    \"identification_number\": \"{{identification_number}}\",\r\n    \"contact_number\": \"{{$randomPhoneNumber}}\",\r\n    \"email\": \"{{consumer_email}}\",\r\n    \"address\": \"{{$randomStreetAddress}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/consumers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Crear cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().create_at).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().email).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().name).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().roles).to.be.a('array').and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"client_email\", pm.response.json().email);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear cliente sin nombre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear cliente sin correo electrónico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear cliente sin contraseña",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear cliente con correo electrónico ya registrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 422\", function() {\r",
+									"    pm.response.to.have.status(422)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{client_email}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autorización",
+			"item": [
+				{
+					"name": "Autenticar asesor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().token).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{agent_email}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/agents/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"agents",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar asesor sin correo electrónico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/agents/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"agents",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar asesor sin contraseña",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{agent_email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/agents/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"agents",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar asesor con credenciales invalidas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 401\", function() {\r",
+									"    pm.response.to.have.status(401)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{agent_email}}\",\r\n    \"password\": \"1234560\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/agents/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"agents",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar consumidor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().token).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{consumer_email}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/consumers/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"consumers",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar consumidor sin correo electrónico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/consumers/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"consumers",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar consumidor sin contraseña",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{consumer_email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/consumers/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"consumers",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar consumidor con credenciales invalidas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 401\", function() {\r",
+									"    pm.response.to.have.status(401)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{consumer_email}}\",\r\n    \"password\": \"1234560\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/consumers/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"consumers",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().token).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{client_email}}\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/clients/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"clients",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar cliente sin correo electrónico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/clients/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"clients",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar cliente sin contraseña",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{client_email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/clients/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"clients",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar cliente con credenciales invalidas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 401\", function() {\r",
+									"    pm.response.to.have.status(401)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{client_email}}\",\r\n    \"password\": \"1234560\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/clients/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"clients",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}
