@@ -39,3 +39,24 @@ class ConsumerControllerTest(TestCase):
         self.assertEqual(consumer['email'], json.loads(response.get_data())['email'])
         self.assertEqual(consumer['address'], json.loads(response.get_data())['address'])
         self.assertIsNotNone(json.loads(response.get_data())['create_at'])
+
+    def test_create_consumer_invalid_email(self):
+        consumer = {
+            'name': self.faker.name(),
+            'identification_type': random.choice(["Cédula de ciudadanía", "Cédula de extranjería",
+                                                  "Tarjeta de identidad", "Pasaporte"]),
+            'identification_number': ''.join([str(random.randint(1, 9)) for _ in range(10)]),
+            'contact_number': ''.join([str(random.randint(1, 9)) for _ in range(10)]),
+            'email': self.faker.email(),
+            'address': self.faker.address(),
+            'password': '123456'
+        }
+        self.test_client.post(
+            '/consumers',
+            data=json.dumps(consumer),
+            headers={'Content-Type': 'application/json'})
+        response = self.test_client.post(
+            '/consumers',
+            data=json.dumps(consumer),
+            headers={'Content-Type': 'application/json'})
+        self.assertEqual(response.status_code, 422)

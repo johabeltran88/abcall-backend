@@ -9,6 +9,9 @@ class ConsumerService:
 
     @staticmethod
     def create_consumer(consumer):
+        consumer_tmp = ConsumerRepository.get_by_email(consumer.email)
+        if consumer_tmp:
+            raise ApiException(ExceptionEnum.INVALID_EMAIL)
         consumer.roles.append(ConsumerRole(RolesEnum.CONSUMER.value, consumer))
         return ConsumerRepository.create(consumer)
 
