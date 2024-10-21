@@ -8,7 +8,7 @@ client_bp = Blueprint('client', __name__)
 
 
 @client_bp.route('/clients', methods=['POST'])
-def create_agent():
+def create_client():
     ValidationUtil.validate_not_blank(request, 'name', 'email', 'password')
     client = Client(request.json['name'], request.json['email'], request.json['password'])
     client = ClientService.create_client(client)
