@@ -11,6 +11,8 @@ class Consumer(db.Model, User):
     contact_number = db.Column(db.String(20), nullable=False)
     address = db.Column(db.String(100), nullable=False)
     roles = relationship('ConsumerRole', back_populates='consumer')
+    companies = relationship('Company', secondary='companies_consumers', back_populates='consumers')
+    pccs = relationship('Pcc', back_populates='consumer')
 
     def __init__(self, name, email, password, identification_type, identification_number, contact_number, address):
         User.__init__(self, name, email, password)
@@ -29,6 +31,6 @@ class Consumer(db.Model, User):
             'email': self.email,
             'address': self.address,
             'create_at': self.created_at,
-            'roles': [role.to_dict() for role in self.roles]
+            'roles': [role.to_dict() for role in self.roles],
+            'companies': [company.to_dict() for company in self.companies]
         }
-

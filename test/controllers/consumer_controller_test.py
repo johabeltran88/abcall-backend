@@ -59,4 +59,4 @@ class ConsumerControllerTest(TestCase):
             '/consumers',
             data=json.dumps(consumer),
             headers={'Content-Type': 'application/json'})
-        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.status_code, 409)

@@ -20,15 +20,8 @@ class ConsumerService:
         return ConsumerRepository.create(consumer)
 
     @staticmethod
-    def login_consumer(email, password):
-        consumer = ConsumerRepository.get_by_email(email)
-        if not (consumer and consumer.check_password(password)):
-            raise ApiException(ExceptionEnum.INVALID_CREDENTIALS)
-        return consumer
-
-    @staticmethod
     def get_consumer_by_identification(identification_type, identification_number):
         consumer = ConsumerRepository.get_by_identification(identification_type, identification_number)
-        if consumer:
+        if not consumer:
             raise ApiException(ExceptionEnum.CONSUMER_NOT_FOUND)
         return consumer

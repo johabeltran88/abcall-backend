@@ -14,11 +14,3 @@ class ClientService:
             raise ApiException(ExceptionEnum.INVALID_EMAIL)
         client.roles.append(ClientRole(RolesEnum.CLIENT.value, client))
         return ClientRepository.create(client)
-
-    @staticmethod
-    def login_client(email, password):
-        client = ClientRepository.get_by_email(email)
-        if not (client and client.check_password(password)):
-            raise ApiException(ExceptionEnum.INVALID_CREDENTIALS)
-        else:
-            return client
