@@ -29,4 +29,7 @@ def client_login():
 
 
 def __build_token(user_id, roles):
-    return {'token': create_access_token(identity=user_id, additional_claims={"roles": roles})}
+    return {'token': create_access_token(identity=user_id, additional_claims={"client_id": user_id, "roles": roles})}
+
+
+

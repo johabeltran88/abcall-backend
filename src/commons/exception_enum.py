@@ -2,7 +2,11 @@ from enum import Enum
 
 
 class ExceptionEnum(Enum):
-    INVALID_CREDENTIALS = (401, 'INVALID_CREDENTIALS', 'Credenciales inválidas')
+    UNAUTHORIZED = (401, 'UNAUTHORIZED', 'Credenciales inválidas')
+    UNAUTHORIZED_WITHOUT_TOKEN = (401, 'UNAUTHORIZED', 'Token no enviado')
+    UNAUTHORIZED_EXPIRED_TOKEN = (401, 'UNAUTHORIZED', 'Token expirado')
+    UNAUTHORIZED_INVALID_TOKEN = (401, 'UNAUTHORIZED', 'Token inválido')
+    FORBIDDEN = (403, 'FORBIDDEN', 'Acceso prohibido')
     BAD_REQUEST_MANDATORY = (402, 'BAD_REQUEST', 'Campos obligatorios no estan presentes en la petición')
     BAD_REQUEST_LENGTH = (402, 'BAD_REQUEST', 'Campos con longitud mínima o máxima inválida')
     INVALID_EMAIL = (409, 'CONFLICT', 'El correo electrónico ya se encuentra registrado')

@@ -1,5 +1,6 @@
 from flask import request, jsonify, Blueprint
 
+from src.commons.decorator import roles_required
 from src.commons.validation_util import ValidationUtil
 from src.models.consumer import Consumer
 from src.services.consumer_service import ConsumerService
@@ -20,6 +21,7 @@ def create_consumer():
 
 @consumer_bp.route('/consumers/identification_type/<identification_type>/identification_number/<identification_number>',
                    methods=['GET'])
+@roles_required('AGENT', 'CONSUMER')
 def get_consumer_by_identification(identification_type, identification_number):
     consumer = ConsumerService.get_consumer_by_identification(identification_type, identification_number)
     return jsonify(consumer.to_dict()), 200

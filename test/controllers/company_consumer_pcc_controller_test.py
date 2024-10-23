@@ -31,10 +31,15 @@ class CompanyConsumerPccControllerTest(TestCase):
             '/consumers',
             data=json.dumps(self.consumer),
             headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/consumers/token',
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
         response = self.test_client.post(
             f"/companies/{json.loads(company.get_data())['id']}/consumers/{json.loads(consumer.get_data())['id']}/pccs",
             data=json.dumps(self.pcc_1),
-            headers={'Content-Type': 'application/json'})
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
         self.assertEqual(response.status_code, 201)
 
     def test_create_pcc_subject_invalid_length_1(self):
@@ -46,10 +51,15 @@ class CompanyConsumerPccControllerTest(TestCase):
             '/consumers',
             data=json.dumps(self.consumer),
             headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/consumers/token',
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
         response = self.test_client.post(
             f"/companies/{json.loads(company.get_data())['id']}/consumers/{json.loads(consumer.get_data())['id']}/pccs",
             data=json.dumps(self.pcc_2),
-            headers={'Content-Type': 'application/json'})
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
         self.assertEqual(response.status_code, 402)
 
     def test_create_pcc_subject_invalid_length_2(self):
@@ -61,10 +71,15 @@ class CompanyConsumerPccControllerTest(TestCase):
             '/consumers',
             data=json.dumps(self.consumer),
             headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/consumers/token',
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
         response = self.test_client.post(
             f"/companies/{json.loads(company.get_data())['id']}/consumers/{json.loads(consumer.get_data())['id']}/pccs",
             data=json.dumps(self.pcc_3),
-            headers={'Content-Type': 'application/json'})
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
         self.assertEqual(response.status_code, 402)
 
     def test_create_pcc_company_not_found(self):
@@ -72,10 +87,15 @@ class CompanyConsumerPccControllerTest(TestCase):
             '/consumers',
             data=json.dumps(self.consumer),
             headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/consumers/token',
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
         response = self.test_client.post(
             f"/companies/error/consumers/{json.loads(consumer.get_data())['id']}/pccs",
             data=json.dumps(self.pcc_1),
-            headers={'Content-Type': 'application/json'})
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
         self.assertEqual(response.status_code, 404)
 
     def test_create_pcc_client_not_found(self):
@@ -83,8 +103,18 @@ class CompanyConsumerPccControllerTest(TestCase):
             '/companies',
             data=json.dumps(self.company),
             headers={'Content-Type': 'application/json'})
+        consumer = self.test_client.post(
+            '/consumers',
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
+
+        token = self.test_client.post(
+            '/auth/consumers/token',
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
         response = self.test_client.post(
             f"/companies/{json.loads(company.get_data())['id']}/consumers/error/pccs",
             data=json.dumps(self.pcc_1),
-            headers={'Content-Type': 'application/json'})
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
         self.assertEqual(response.status_code, 404)
