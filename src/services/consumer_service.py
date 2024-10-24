@@ -25,3 +25,10 @@ class ConsumerService:
         if not consumer:
             raise ApiException(ExceptionEnum.CONSUMER_NOT_FOUND)
         return consumer
+
+    @staticmethod
+    def get_consumer_by_id(consumer_id):
+        consumer = ConsumerRepository.get_by_id(consumer_id)
+        if not consumer:
+            raise ApiException(ExceptionEnum.CONSUMER_NOT_FOUND)
+        return consumer

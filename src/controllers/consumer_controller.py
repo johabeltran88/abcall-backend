@@ -1,4 +1,5 @@
 from flask import request, jsonify, Blueprint
+from flask_jwt_extended import get_jwt
 
 from src.commons.decorator import roles_required
 from src.commons.validation_util import ValidationUtil
@@ -17,6 +18,13 @@ def create_consumer():
                         request.json['contact_number'], request.json['address'])
     consumer = ConsumerService.create_consumer(consumer)
     return jsonify(consumer.to_dict()), 201
+
+
+@consumer_bp.route('/consumers', methods=['GET'])
+@roles_required('CONSUMER')
+def get_consumer_by_token():
+    consumer = ConsumerService.get_consumer_by_id(get_jwt().get("consumer_id"))
+    return jsonify(consumer.to_dict()), 200
 
 
 @consumer_bp.route('/consumers/identification_type/<identification_type>/identification_number/<identification_number>',
