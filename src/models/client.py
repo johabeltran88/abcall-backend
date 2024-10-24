@@ -9,8 +9,7 @@ from src.models.base_user import User
 
 class Client(db.Model, User):
     __tablename__ = 'clients'
-    company_id = db.Column(UUID(as_uuid=True) if os.environ.get('DB_URI', None) is None else String,
-                           db.ForeignKey('companies.id'), nullable=True)
+    company_id = db.Column(String(36), db.ForeignKey('companies.id'), nullable=True)
     roles = relationship('ClientRole', back_populates='client')
     company = relationship('Company', back_populates='clients')
 

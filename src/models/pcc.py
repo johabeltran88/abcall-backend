@@ -12,10 +12,8 @@ class Pcc(db.Model, BaseModel):
     subject = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
     status = db.Column(db.String(50), nullable=False)
-    consumer_id = db.Column(UUID(as_uuid=True) if os.environ.get('DB_URI', None) is None else String,
-                            db.ForeignKey('consumers.id'), nullable=False)
-    company_id = db.Column(UUID(as_uuid=True) if os.environ.get('DB_URI', None) is None else String,
-                           db.ForeignKey('companies.id'), nullable=True)
+    consumer_id = db.Column(db.String(36), db.ForeignKey('consumers.id'), nullable=False)
+    company_id = db.Column(db.String(36), db.ForeignKey('companies.id'), nullable=True)
     consumer = relationship('Consumer', back_populates='pccs')
     company = relationship('Company', back_populates='pccs')
 

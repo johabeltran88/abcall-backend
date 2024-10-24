@@ -40,7 +40,7 @@ def build_company_request(faker):
 def build_pcc_request_1(faker):
     return {
         'subject': faker.sentence(),
-        'description': faker.paragraph(nb_sentences=20)
+        'description': "microchip magnetic embrace Markets encoding blue collaborative Croatia Assurance France Legacy overriding ivory payment Delaware solution-oriented coherent Baht services Denar Garden Distributed sticky edge fresh-thinking Wooden application Avon Dakota Wells Fantastic bandwidth-monitored Balanced France Chief bandwidth portals Rubber customized transmit pink Advanced navigating Practical Games black Berkshire bandwidth drive Cotton Wooden web-readiness Berkshire navigate Cambridgeshire Engineer cross-media wireless definition blue Berkshire Generic Solutions drive SAS Wooden Automotive Won Shirt sky Egyptian 24 Rustic Alabama Fork Implemented digital Soap payment markets optimal communities stable Global synthesize Berkshire deposit Customer online digital Bermuda Global Interface silver Berkshire Tennessee Research Consultant Guilder Buckinghamshire"
     }
 
 
@@ -54,5 +54,5 @@ def build_pcc_request_2(faker):
 def build_pcc_request_3(faker):
     return {
         'subject': faker.sentence(),
-        'description': faker.paragraph(nb_sentences=200)
+        'description': faker.paragraph(nb_sentences=300)
     }
