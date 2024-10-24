@@ -31,5 +31,6 @@ class Pcc(db.Model, BaseModel):
             'subject': self.subject,
             'description': self.description,
             'create_at': self.created_at,
+            'status': self.status,
             'company': self.company.to_dict() if self.company else None
         }
