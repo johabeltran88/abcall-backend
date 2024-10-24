@@ -32,5 +32,6 @@ class Consumer(db.Model, User):
             'address': self.address,
             'create_at': self.created_at,
             'roles': [role.to_dict() for role in self.roles],
-            'companies': [company.to_dict() for company in self.companies]
+            'companies': [company.to_dict() for company in self.companies],
+            'pccs': [pcc.to_dict() for pcc in self.pccs]
         }
