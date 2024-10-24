@@ -5,7 +5,7 @@ from src.models import Client
 class ClientRepository:
 
     @staticmethod
-    def create(client: Client):
+    def create(client):
         db.session.add(client)
         db.session.commit()
         return client
@@ -13,3 +13,11 @@ class ClientRepository:
     @staticmethod
     def get_by_email(email):
         return Client.query.filter_by(email=email).first()
+
+    @staticmethod
+    def get_by_id(client_id):
+        return Client.query.filter_by(id=client_id).first()
+
+    @staticmethod
+    def add_company():
+        db.session.commit()
