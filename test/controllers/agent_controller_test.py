@@ -45,3 +45,23 @@ class AgentControllerTest(TestCase):
             data=json.dumps(agent),
             headers={'Content-Type': 'application/json'})
         self.assertEqual(response.status_code, 409)
+
+    def test_get_agent_by_token_success(self):
+        agent = {
+            'name': self.faker.name(),
+            'email': self.faker.email(),
+            'password': '123456'
+        }
+        self.test_client.post(
+            '/agents',
+            data=json.dumps(agent),
+            headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/agents/token',
+            data=json.dumps(agent),
+            headers={'Content-Type': 'application/json'})
+        response = self.test_client.get(
+            "/agents",
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+        self.assertEqual(response.status_code, 200)

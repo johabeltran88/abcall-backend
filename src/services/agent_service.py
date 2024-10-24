@@ -18,6 +18,4 @@ class AgentService:
     @staticmethod
     def get_agent_by_id(agent_id):
         consumer = AgentRepository.get_by_id(agent_id)
-        if not consumer:
-            raise ApiException(ExceptionEnum.AGENT_NOT_FOUND)
         return consumer

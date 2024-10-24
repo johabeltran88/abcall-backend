@@ -37,3 +37,18 @@ class ClientControllerTest(TestCase):
             data=json.dumps(self.client),
             headers={'Content-Type': 'application/json'})
         self.assertEqual(response.status_code, 409)
+
+    def test_get_client_by_token_success(self):
+        self.test_client.post(
+            '/clients',
+            data=json.dumps(self.client),
+            headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/clients/token',
+            data=json.dumps(self.client),
+            headers={'Content-Type': 'application/json'})
+        response = self.test_client.get(
+            "/clients",
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+        self.assertEqual(response.status_code, 200)

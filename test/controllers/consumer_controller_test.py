@@ -123,6 +123,36 @@ class ConsumerControllerTest(TestCase):
             headers={'Content-Type': 'application/json'})
         self.assertEqual(response.status_code, 401)
 
+    def test_get_client_by_token_success(self):
+        self.test_client.post(
+            '/consumers',
+            data=json.dumps(self.consumer_1),
+            headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/consumers/token',
+            data=json.dumps(self.consumer_1),
+            headers={'Content-Type': 'application/json'})
+        response = self.test_client.get(
+            "/consumers",
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_client_by_token_with_invalid_role_error(self):
+        self.test_client.post(
+            '/consumers',
+            data=json.dumps(self.consumer_1),
+            headers={'Content-Type': 'application/json'})
+        token = self.test_client.post(
+            '/auth/consumers/token',
+            data=json.dumps(self.consumer_1),
+            headers={'Content-Type': 'application/json'})
+        response = self.test_client.get(
+            "/clients",
+            headers={'Content-Type': 'application/json',
+                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+        self.assertEqual(response.status_code, 403)
+
     def validate_response(self, response):
         self.assertIsNotNone(json.loads(response.get_data())['id'])
         self.assertEqual(self.consumer_1['name'], json.loads(response.get_data())['name'])

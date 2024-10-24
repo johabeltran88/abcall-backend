@@ -21,4 +21,4 @@ def create_client():
 @roles_required('CLIENT')
 def get_consumer_by_token():
     consumer = ClientService.get_client_by_id(get_jwt().get("client_id"))
-    return jsonify(consumer.to_dict()), 20
+    return jsonify(consumer.to_dict()), 200

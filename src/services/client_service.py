@@ -18,6 +18,4 @@ class ClientService:
     @staticmethod
     def get_client_by_id(client_id):
         client = ClientRepository.get_by_id(client_id)
-        if not client:
-            raise ApiException(ExceptionEnum.CLIENT_NOT_FOUND)
         return client

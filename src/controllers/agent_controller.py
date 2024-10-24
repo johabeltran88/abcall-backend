@@ -21,4 +21,4 @@ def create_agent():
 @roles_required('AGENT')
 def get_agent_by_token():
     consumer = AgentService.get_agent_by_id(get_jwt().get("agent_id"))
-    return jsonify(consumer.to_dict()), 20
+    return jsonify(consumer.to_dict()), 200
