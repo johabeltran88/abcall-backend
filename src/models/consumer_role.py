@@ -1,6 +1,3 @@
-import os
-
-from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
@@ -11,8 +8,7 @@ from src.models.base_model import BaseModel
 class ConsumerRole(db.Model, BaseModel):
     __tablename__ = 'consumers_roles'
     name = db.Column(db.String(100), nullable=False)
-    consumer_id = db.Column(UUID(as_uuid=True) if os.environ.get('DB_URI', None) is None else String,
-                            db.ForeignKey('consumers.id'), nullable=False)
+    consumer_id = db.Column(db.String(36), db.ForeignKey('consumers.id'), nullable=False)
     consumer = relationship('Consumer', back_populates='roles')
 
     def __init__(self, name, consumer_id):

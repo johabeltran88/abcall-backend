@@ -16,9 +16,6 @@ class ClientService:
         return ClientRepository.create(client)
 
     @staticmethod
-    def login_client(email, password):
-        client = ClientRepository.get_by_email(email)
-        if not (client and client.check_password(password)):
-            raise ApiException(ExceptionEnum.INVALID_CREDENTIALS)
-        else:
-            return client
+    def get_client_by_id(client_id):
+        client = ClientRepository.get_by_id(client_id)
+        return client

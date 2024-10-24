@@ -13,3 +13,7 @@ class AgentRepository:
     @staticmethod
     def get_by_email(email):
         return Agent.query.filter_by(email=email).first()
+
+    @staticmethod
+    def get_by_id(agent_id):
+        return Agent.query.filter_by(id=agent_id).first()
