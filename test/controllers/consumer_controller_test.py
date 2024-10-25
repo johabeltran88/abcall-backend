@@ -60,7 +60,7 @@ class ConsumerControllerTest(TestCase):
         response = self.test_client.get(
             f"/consumers/identification_type/{self.consumer_1['identification_type']}/identification_number/{self.consumer_1['identification_number']}",
             headers={'Content-Type': 'application/json',
-                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+                     'Authorization': f"Bearer {json.loads(token.get_data())['token']}"})
         self.assertEqual(response.status_code, 200)
         self.validate_response(response)
 
@@ -76,7 +76,7 @@ class ConsumerControllerTest(TestCase):
         response = self.test_client.get(
             f"/consumers/identification_type/{self.consumer_1['identification_type']}/identification_number/{self.consumer_1['identification_number']}1",
             headers={'Content-Type': 'application/json',
-                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+                     'Authorization': f"Bearer {json.loads(token.get_data())['token']}"})
         self.assertEqual(response.status_code, 404)
 
     def test_get_consumer_expired_token_error(self):
@@ -135,7 +135,7 @@ class ConsumerControllerTest(TestCase):
         response = self.test_client.get(
             "/consumers",
             headers={'Content-Type': 'application/json',
-                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+                     'Authorization': f"Bearer {json.loads(token.get_data())['token']}"})
         self.assertEqual(response.status_code, 200)
 
     def test_get_client_by_token_with_invalid_role_error(self):
@@ -150,7 +150,7 @@ class ConsumerControllerTest(TestCase):
         response = self.test_client.get(
             "/clients",
             headers={'Content-Type': 'application/json',
-                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+                     'Authorization': f"Bearer {json.loads(token.get_data())['token']}"})
         self.assertEqual(response.status_code, 403)
 
     def validate_response(self, response):
