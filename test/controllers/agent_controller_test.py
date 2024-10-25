@@ -63,5 +63,5 @@ class AgentControllerTest(TestCase):
         response = self.test_client.get(
             "/agents",
             headers={'Content-Type': 'application/json',
-                     'Authorization': f'Bearer {json.loads(token.get_data())['token']}'})
+                     'Authorization': f"Bearer {json.loads(token.get_data())['token']}"})
         self.assertEqual(response.status_code, 200)
