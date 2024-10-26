@@ -11,6 +11,7 @@ class ExceptionEnum(Enum):
     BAD_REQUEST_LENGTH = (402, 'BAD_REQUEST', 'Campos con longitud mínima o máxima inválida')
     INVALID_EMAIL = (409, 'CONFLICT', 'El correo electrónico ya se encuentra registrado')
     INVALID_IDENTIFICATION = (409, 'CONFLICT', 'El tipo y número de identificación ya se encuentra registrado')
+    INVALID_COMPANY_CLIENT = (409, 'CONFLICT', 'El consumidor ya esta asociado a la empresa')
     COMPANY_NOT_FOUND = (404, 'NOT_FOUND', 'Compañia no encontrada')
     CONSUMER_NOT_FOUND = (404, 'NOT_FOUND', 'Consumidor no encontrado')
     CLIENT_NOT_FOUND = (404, 'NOT_FOUND', 'Cliente no encontrado')
