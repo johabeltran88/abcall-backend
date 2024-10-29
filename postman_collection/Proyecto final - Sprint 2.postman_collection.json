@@ -3010,6 +3010,53 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Asesores - PQRs",
+			"item": [
+				{
+					"name": "Obtener PQRs de un asesor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_agent}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/agents/pccs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agents",
+								"pccs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {

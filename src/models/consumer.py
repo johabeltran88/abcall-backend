@@ -35,3 +35,15 @@ class Consumer(db.Model, User):
             'companies': [company.to_dict() for company in self.companies],
             'pccs': [pcc.to_dict() for pcc in self.pccs]
         }
+
+    def to_dict_2(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'identification_type': self.identification_type,
+            'identification_number': self.identification_number,
+            'contact_number': self.contact_number,
+            'email': self.email,
+            'address': self.address,
+            'create_at': self.created_at
+        }

@@ -7,6 +7,7 @@ from src.models.base_user import User
 class Agent(db.Model, User):
     __tablename__ = 'agents'
     roles = relationship('AgentRole', back_populates='agent')
+    pccs = relationship('Pcc', back_populates='agent')
 
     def __init__(self, name, email, password):
         User.__init__(self, name, email, password)
