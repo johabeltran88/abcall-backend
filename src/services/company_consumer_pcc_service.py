@@ -1,5 +1,6 @@
 from src.commons.exception_enum import ExceptionEnum
 from src.exceptions.api_exception import ApiException
+from src.repositories.agent_repository import AgentRepository
 from src.repositories.company_repository import CompanyRepository
 from src.repositories.consumer_repository import ConsumerRepository
 from src.repositories.pcc_repository import PccRepository
@@ -15,6 +16,9 @@ class CompanyConsumerPccService:
         consumer = ConsumerRepository.get_by_id(consumer_id)
         if not consumer:
             raise ApiException(ExceptionEnum.CONSUMER_NOT_FOUND)
+        agent = AgentRepository.get_random()
+        print(agent.id)
         pcc.company_id = company.id
         pcc.consumer_id = consumer.id
+        pcc.agent_id = agent.id
         return PccRepository.create(pcc)
