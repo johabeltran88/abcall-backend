@@ -1,4 +1,5 @@
 from src.controllers.agent_controller import agent_bp
+from src.controllers.agent_pcc_controller import agent_pcc_bp
 from src.controllers.auth_controller import auth_bp
 from src.controllers.client_controller import client_bp
 from src.controllers.company_client_controller import company_client_bp
@@ -19,3 +20,4 @@ def register_blueprint(app):
     app.register_blueprint(company_bp)
     app.register_blueprint(consumer_bp)
     app.register_blueprint(health_bp)
+    app.register_blueprint(agent_pcc_bp)
