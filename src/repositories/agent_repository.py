@@ -3,11 +3,10 @@ from src.models.agent import Agent
 from sqlalchemy.sql.expression import func
 
 
-
 class AgentRepository:
 
     @staticmethod
-    def create(agent: Agent):
+    def create(agent):
         db.session.add(agent)
         db.session.commit()
         return agent

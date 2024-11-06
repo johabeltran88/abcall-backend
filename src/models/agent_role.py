@@ -1,7 +1,4 @@
-import os
-
 from sqlalchemy import String
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
 from src.config.database_config import db

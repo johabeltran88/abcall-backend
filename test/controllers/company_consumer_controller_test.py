@@ -51,3 +51,22 @@ class CompanyConsumerControllerTest(TestCase):
             data=json.dumps(self.consumer),
             headers={'Content-Type': 'application/json'})
         self.assertEqual(response.status_code, 404)
+
+    def test_add_consumer_to_company_error(self):
+        company = self.test_client.post(
+            '/companies',
+            data=json.dumps(self.company),
+            headers={'Content-Type': 'application/json'})
+        consumer = self.test_client.post(
+            '/consumers',
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
+        self.test_client.post(
+            f"/companies/{json.loads(company.get_data())['id']}/consumers/{json.loads(consumer.get_data())['id']}",
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
+        response = self.test_client.post(
+            f"/companies/{json.loads(company.get_data())['id']}/consumers/{json.loads(consumer.get_data())['id']}",
+            data=json.dumps(self.consumer),
+            headers={'Content-Type': 'application/json'})
+        self.assertEqual(response.status_code, 409)
