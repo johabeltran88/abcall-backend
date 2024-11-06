@@ -1,6 +1,4 @@
-from sqlalchemy import UUID, String
-import os
-
+from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
 from src.config.database_config import db
