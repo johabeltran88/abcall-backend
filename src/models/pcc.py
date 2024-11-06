@@ -15,6 +15,7 @@ class Pcc(db.Model, BaseModel):
     consumer = relationship('Consumer', back_populates='pccs')
     company = relationship('Company', back_populates='pccs')
     agent = relationship('Agent', back_populates='pccs')
+    notifications = relationship('Notification', back_populates='pcc')
 
     def __init__(self, subject, description):
         BaseModel.__init__(self)
@@ -41,4 +42,16 @@ class Pcc(db.Model, BaseModel):
             'status': self.status,
             'consumer': self.consumer.to_dict_2() if self.consumer else None,
             'company': self.company.to_dict() if self.company else None
+        }
+
+    def to_dict_with_consumer_and_company_and_notifications(self):
+        return {
+            'id': self.id,
+            'subject': self.subject,
+            'description': self.description,
+            'create_at': self.created_at,
+            'status': self.status,
+            'consumer': self.consumer.to_dict_2() if self.consumer else None,
+            'company': self.company.to_dict() if self.company else None,
+            'notifications': [notification.to_dict() for notification in self.notifications],
         }

@@ -1,3 +1,6 @@
+import random
+
+
 def build_consumer_request_1(faker, random):
     return {
         'name': faker.name(),
@@ -5,7 +8,7 @@ def build_consumer_request_1(faker, random):
                                               "Tarjeta de identidad", "Pasaporte"]),
         'identification_number': ''.join([str(random.randint(1, 9)) for _ in range(10)]),
         'contact_number': ''.join([str(random.randint(1, 9)) for _ in range(10)]),
-        'email': faker.email(),
+        'email': ''.join([str(random.randint(1, 9)) for _ in range(10)]) + faker.email(),
         'address': faker.address(),
         'password': '123456'
     }
@@ -17,7 +20,7 @@ def build_consumer_request_2(consumer, faker, random):
         'identification_type': consumer['identification_type'],
         'identification_number': consumer['identification_number'],
         'contact_number': ''.join([str(random.randint(1, 9)) for _ in range(10)]),
-        'email': faker.email(),
+        'email': ''.join([str(random.randint(1, 9)) for _ in range(10)]) + faker.email(),
         'address': faker.address(),
         'password': '123456'
     }
@@ -26,7 +29,7 @@ def build_consumer_request_2(consumer, faker, random):
 def build_agent_or_client_request(faker):
     return {
         'name': faker.name(),
-        'email': faker.email(),
+        'email': ''.join([str(random.randint(1, 9)) for _ in range(10)]) +faker.email(),
         'password': '123456'
     }
 

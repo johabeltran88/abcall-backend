@@ -16,6 +16,8 @@ class ExceptionEnum(Enum):
     CONSUMER_NOT_FOUND = (404, 'NOT_FOUND', 'Consumidor no encontrado')
     CLIENT_NOT_FOUND = (404, 'NOT_FOUND', 'Cliente no encontrado')
     AGENT_NOT_FOUND = (404, 'NOT_FOUND', 'Asesor no encontrado')
+    PCC_NOT_FOUND = (404, 'NOT_FOUND', 'PQR no encontrado')
+    PCC_NOT_BELONG_TO_CLIENT = (409, 'CONFLICT', 'El PQR no pertenece al consumidor')
 
     def __init__(self, http_code, error_code, error_message):
         self.http_code = http_code
