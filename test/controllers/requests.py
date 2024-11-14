@@ -29,7 +29,7 @@ def build_consumer_request_2(consumer, faker, random):
 def build_agent_or_client_request(faker):
     return {
         'name': faker.name(),
-        'email': ''.join([str(random.randint(1, 9)) for _ in range(10)]) +faker.email(),
+        'email': ''.join([str(random.randint(1, 9)) for _ in range(10)]) + faker.email(),
         'password': '123456'
     }
 
@@ -58,4 +58,11 @@ def build_pcc_request_3(faker):
     return {
         'subject': faker.sentence(),
         'description': faker.paragraph(nb_sentences=300)
+    }
+
+
+def build_notification(faker):
+    return {
+        'status': "En revisión",
+        'reason': faker.sentence()
     }

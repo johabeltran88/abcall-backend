@@ -1,3 +1,5 @@
+from sqlalchemy import update
+
 from src.config.database_config import db
 from src.models import Pcc
 
@@ -21,3 +23,12 @@ class PccRepository:
     @staticmethod
     def get_pcc_by_id(pcc_id):
         return Pcc.query.filter_by(id=pcc_id).first()
+
+    @staticmethod
+    def update_status(pcc_id, new_status):
+        db.session.execute(
+            update(Pcc).
+            where(Pcc.id == pcc_id).
+            values(status=new_status)
+        )
+        db.session.commit()
