@@ -2057,7 +2057,7 @@
 			]
 		},
 		{
-			"name": "Consumidores Autorizado",
+			"name": "Consumidores",
 			"item": [
 				{
 					"name": "Obtener consumidor por token",
@@ -3352,7 +3352,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Language",
+								"value": "es",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/pccs/:pcc_id",
 							"host": [
@@ -3762,11 +3768,8 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Información presente\", function() {\r",
-									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
-									"    pm.expect(pm.response.json().status).to.be.a('string').and.to.not.be.empty;\r",
-									"    pm.expect(pm.response.json().subject).to.be.a('string').and.to.not.be.empty;\r",
-									"    pm.expect(pm.response.json().description).to.be.a('string').and.to.not.be.empty;\r",
-									"    pm.expect(pm.response.json().notifications).to.be.a('array').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -3811,6 +3814,620 @@
 									"key": "pcc_id",
 									"value": "{{pcc_id}}"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PQR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().status).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().subject).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().description).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().notifications).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const status_list = [\"Pendiente por documentación\", \"Cerrada con solución\", \"Cerrada sin solución\", \"En revisión\"];\r",
+									"const status = status_list[Math.floor(Math.random() * status_list.length)];\r",
+									"pm.environment.set(\"status\", status);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_agent}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"{{status}}\",\r\n    \"reason\": \"{{$randomLoremSentence}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pccs/:pcc_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pccs",
+								":pcc_id"
+							],
+							"variable": [
+								{
+									"key": "pcc_id",
+									"value": "{{pcc_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PQR sin estado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const status_list = [\"Pendiente por documentación\", \"Cerrada con solución\", \"Cerrada sin solución\", \"En revisión\"];\r",
+									"const status = status_list[Math.floor(Math.random() * status_list.length)];\r",
+									"pm.environment.set(\"status\", status);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_agent}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reason\": \"{{$randomLoremSentence}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pccs/:pcc_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pccs",
+								":pcc_id"
+							],
+							"variable": [
+								{
+									"key": "pcc_id",
+									"value": "{{pcc_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PQR sin razón",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const status_list = [\"Pendiente por documentación\", \"Cerrada con solución\", \"Cerrada sin solución\", \"En revisión\"];\r",
+									"const status = status_list[Math.floor(Math.random() * status_list.length)];\r",
+									"pm.environment.set(\"status\", status);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_agent}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"{{status}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pccs/:pcc_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pccs",
+								":pcc_id"
+							],
+							"variable": [
+								{
+									"key": "pcc_id",
+									"value": "{{pcc_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PQR con razón < 8",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const status_list = [\"Pendiente por documentación\", \"Cerrada con solución\", \"Cerrada sin solución\", \"En revisión\"];\r",
+									"const status = status_list[Math.floor(Math.random() * status_list.length)];\r",
+									"pm.environment.set(\"status\", status);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_agent}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"{{status}}\",\r\n    \"reason\": \"short\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pccs/:pcc_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pccs",
+								":pcc_id"
+							],
+							"variable": [
+								{
+									"key": "pcc_id",
+									"value": "{{pcc_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PQR con razón > 1000",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 402\", function() {\r",
+									"    pm.response.to.have.status(402)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().fields).to.be.a('array').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const status_list = [\"Pendiente por documentación\", \"Cerrada con solución\", \"Cerrada sin solución\", \"En revisión\"];\r",
+									"const status = status_list[Math.floor(Math.random() * status_list.length)];\r",
+									"pm.environment.set(\"status\", status);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_agent}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"{{status}}\",\r\n    \"reason\": \"Licensed transform back-end Home mobile Account e-business Handcrafted redefine Clothing Islands Unbranded maroon collaboration Guyana Account Generic Mountains Lira EXE SAS Fresh Luxembourg Ball strategic Concrete Directives Security Chips relationships program front-end Courts Right-sized Lead payment Iraqi e-markets Communications functionalities interactive matrix Cotton high-level Pants 5th olive Loan infomediaries Cambridgeshire Lead Pizza Soft motivating indexing synthesize West object-oriented Gloves Utah Concrete client-server Home port USB quantifying International SDD Bedfordshire scalable Card cross-platform Bike encompassing reintermediate Music Account Fresh Concrete Fish facilitate Cotton encoding compress User-centric Fresh coherent system West Officer Personal systems Concrete incentivize Extended lavender Liaison Generic invoice Pizza Licensed transform back-end Home mobile Account e-business Handcrafted redefine Clothing Islands Unbranded maroon collaboration Guyana Account Generic Mountains Lira EXE SAS Fresh Luxembourg Ball strategic Concrete Directives Security Chips relationships program front-end Courts Right-sized Lead payment Iraqi e-markets Communications functionalities interactive matrix Cotton high-level Pants 5th olive Loan infomediaries Cambridgeshire Lead Pizza Soft motivating indexing synthesize West object-oriented Gloves Utah Concrete client-server Home port USB quantifying International SDD Bedfordshire scalable Card cross-platform Bike encompassing reintermediate Music Account Fresh Concrete Fish facilitate Cotton encoding compress User-centric Fresh coherent system West Officer Personal systems Concrete incentivize Extended lavender Liaison Generic invoice Pizza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pccs/:pcc_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pccs",
+								":pcc_id"
+							],
+							"variable": [
+								{
+									"key": "pcc_id",
+									"value": "{{pcc_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PQR que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const status_list = [\"Pendiente por documentación\", \"Cerrada con solución\", \"Cerrada sin solución\", \"En revisión\"];\r",
+									"const status = status_list[Math.floor(Math.random() * status_list.length)];\r",
+									"pm.environment.set(\"status\", status);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_agent}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"{{status}}\",\r\n    \"reason\": \"{{$randomLoremSentence}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pccs/:pcc_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pccs",
+								":pcc_id"
+							],
+							"variable": [
+								{
+									"key": "pcc_id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PQR con token de consumidor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 403\", function() {\r",
+									"    pm.response.to.have.status(403)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().error_code).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().error_message).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const status_list = [\"Pendiente por documentación\", \"Cerrada con solución\", \"Cerrada sin solución\", \"En revisión\"];\r",
+									"const status = status_list[Math.floor(Math.random() * status_list.length)];\r",
+									"pm.environment.set(\"status\", status);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_consumer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"{{status}}\",\r\n    \"reason\": \"{{$randomLoremSentence}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pccs/:pcc_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pccs",
+								":pcc_id"
+							],
+							"variable": [
+								{
+									"key": "pcc_id",
+									"value": "{{pcc_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente -PQRs",
+			"item": [
+				{
+					"name": "Obtener PQRs de un cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_client}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients/pccs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients",
+								"pccs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener PQRs de un cliente con token de consumidor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 403\", function() {\r",
+									"    pm.response.to.have.status(403)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_consumer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients/pccs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients",
+								"pccs"
 							]
 						}
 					},
