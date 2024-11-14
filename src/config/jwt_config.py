@@ -9,6 +9,7 @@ from src.exceptions.api_exception import ApiException
 def init_jwt(app):
     app.config["JWT_SECRET_KEY"] = "super-secret-key"
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+    app.config['PROPAGATE_EXCEPTIONS'] = True
     jwt = JWTManager(app)
 
     @jwt.unauthorized_loader
