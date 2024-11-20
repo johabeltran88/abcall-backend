@@ -21,5 +21,6 @@ class Notification(db.Model, BaseModel):
         return {
             'id': self.id,
             'status': self.status,
-            'reason': self.reason
+            'reason': self.reason,
+            'create_at': self.created_at
         }
