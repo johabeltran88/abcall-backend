@@ -1,4 +1,4 @@
-from sqlalchemy import update
+from sqlalchemy import update, text
 
 from src.config.database_config import db
 from src.models import Pcc
@@ -14,11 +14,11 @@ class PccRepository:
 
     @staticmethod
     def get_pccs_by_agent_id(agent_id):
-        return Pcc.query.filter_by(agent_id=agent_id).all()
+        return Pcc.query.filter_by(agent_id=agent_id).order_by(text('created_at DESC')).all()
 
     @staticmethod
     def get_pccs_by_company_id(company_id):
-        return Pcc.query.filter_by(company_id=company_id).all()
+        return Pcc.query.filter_by(company_id=company_id).order_by(text('created_at DESC')).all()
 
     @staticmethod
     def get_pcc_by_id(pcc_id):
