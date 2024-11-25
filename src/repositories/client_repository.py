@@ -12,7 +12,7 @@ class ClientRepository:
 
     @staticmethod
     def get_by_email(email):
-        return Client.query.filter_by(email=email).first()
+        return Client.query.filter(Client.email.ilike(email)).first()
 
     @staticmethod
     def get_by_id(client_id):

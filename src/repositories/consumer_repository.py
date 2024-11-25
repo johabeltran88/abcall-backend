@@ -12,7 +12,7 @@ class ConsumerRepository:
 
     @staticmethod
     def get_by_email(email):
-        return Consumer.query.filter_by(email=email).first()
+        return Consumer.query.filter(Consumer.email.ilike(email)).first()
 
     @staticmethod
     def get_by_identification(identification_type, identification_number):

@@ -53,5 +53,9 @@ class Pcc(db.Model, BaseModel):
             'status': self.status,
             'consumer': self.consumer.to_dict_2() if self.consumer else None,
             'company': self.company.to_dict() if self.company else None,
-            'notifications': [notification.to_dict() for notification in self.notifications],
+            'notifications': [notification.to_dict_with_roles_and_companies_and_pccs() for notification in sorted(
+                self.notifications,
+                key=lambda notification: notification.created_at,
+                reverse=True
+            )],
         }
