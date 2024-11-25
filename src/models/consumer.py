@@ -33,7 +33,11 @@ class Consumer(db.Model, User):
             'create_at': self.created_at,
             'roles': [role.to_dict() for role in self.roles],
             'companies': [company.to_dict() for company in self.companies],
-            'pccs': [pcc.to_dict() for pcc in self.pccs]
+            'pccs': [pcc.to_dict() for pcc in sorted(
+                self.pccs,
+                key=lambda pcc: pcc.created_at,
+                reverse=True
+            )]
         }
 
     def to_dict_2(self):
